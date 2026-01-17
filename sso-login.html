@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSO Login - NEXUS AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="13" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Enterprise SSO Login</h1>
+                <p class="auth-subtitle">Sign in with your company credentials</p>
+            </div>
+
+            <!-- Form -->
+            <form id="ssoForm" novalidate>
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message hidden">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 4.5V8.5M8 11V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message hidden">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span id="successText"></span>
+                </div>
+
+                <!-- Company Domain Field -->
+                <div class="form-group">
+                    <label for="domain" class="form-label">Company Domain</label>
+                    <div class="sso-domain-wrapper">
+                        <input
+                            type="text"
+                            id="domain"
+                            name="domain"
+                            class="form-input"
+                            placeholder="yourcompany"
+                            value="intuvia"
+                            required
+                        >
+                        <span class="sso-domain-suffix">.com</span>
+                    </div>
+                    <span class="field-error" id="domainError"></span>
+                    <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">
+                        Demo: Use "intuvia" as the domain
+                    </p>
+                </div>
+
+                <!-- Continue Button -->
+                <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                    <span class="btn-text">Continue with SSO</span>
+                    <span class="btn-loader hidden">
+                        <svg class="spinner" width="20" height="20" viewBox="0 0 20 20">
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="50" stroke-dashoffset="20"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Alternative Options -->
+                <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="window.location.href='index.html'">
+                    Sign in with Email
+                </button>
+
+                <!-- Back to Login -->
+                <a href="index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Back to Login</span>
+                </a>
+            </form>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay hidden" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Authenticating with SSO provider...</p>
+        </div>
+
+        <!-- Security Notice -->
+        <p class="security-notice">
+            This is a demo. In production, this would redirect to your identity provider.
+        </p>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/validation.js"></script>
+    <script>
+        // SSO Login Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('ssoForm');
+            const domainInput = document.getElementById('domain');
+            const domainError = document.getElementById('domainError');
+            const submitBtn = document.getElementById('submitBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const successMessage = document.getElementById('successMessage');
+            const successText = document.getElementById('successText');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            // Check if already logged in
+            if (window.NexusAuth && window.NexusAuth.isLoggedIn()) {
+                window.NexusAuth.redirectToDashboard();
+                return;
+            }
+
+            // Domain validation
+            domainInput.addEventListener('input', () => {
+                if (domainInput.classList.contains('error')) {
+                    if (domainInput.value.trim()) {
+                        domainInput.classList.remove('error');
+                        domainInput.classList.add('success');
+                        domainError.textContent = '';
+                    }
+                }
+                errorMessage.classList.add('hidden');
+            });
+
+            // Form submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const domain = domainInput.value.trim();
+
+                if (!domain) {
+                    domainInput.classList.add('error');
+                    domainError.textContent = 'Please enter your company domain';
+                    return;
+                }
+
+                // Show loading state
+                window.NexusValidation.setButtonLoading(submitBtn, true);
+                errorMessage.classList.add('hidden');
+                successMessage.classList.add('hidden');
+
+                // Show loading overlay
+                loadingOverlay.classList.remove('hidden');
+
+                try {
+                    // Simulate SSO authentication
+                    const result = await window.NexusAuth.loginWithSSO(domain + '.com');
+
+                    if (!result.success) {
+                        loadingOverlay.classList.add('hidden');
+                        window.NexusValidation.setButtonLoading(submitBtn, false);
+                        window.NexusValidation.showError(errorMessage, errorText, result.error);
+                        return;
+                    }
+
+                    // Create session and redirect
+                    window.NexusAuth.createSession(result.user);
+
+                    // Update loading text
+                    loadingOverlay.querySelector('.loading-text').textContent = 'Authentication successful! Redirecting...';
+
+                    setTimeout(() => {
+                        window.NexusAuth.redirectToDashboard();
+                    }, 1000);
+                } catch (error) {
+                    loadingOverlay.classList.add('hidden');
+                    window.NexusValidation.setButtonLoading(submitBtn, false);
+                    window.NexusValidation.showError(errorMessage, errorText, 'An error occurred. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

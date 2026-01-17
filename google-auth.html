@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in with Google - NEXUS AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-icon" style="background-color: rgba(66, 133, 244, 0.1);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Sign in with Google</h1>
+                <p class="auth-subtitle">Choose an account to continue to NEXUS AI</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M8 4.5V8.5M8 11V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span id="errorText"></span>
+            </div>
+
+            <!-- Google Accounts List -->
+            <div class="google-accounts">
+                <div class="google-account" data-email="user@example.com">
+                    <div class="google-avatar">ED</div>
+                    <div class="google-account-info">
+                        <p class="google-account-name">Emily Davis</p>
+                        <p class="google-account-email">user@example.com</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="color: var(--text-tertiary);">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <div class="google-account" data-email="organizer@example.com">
+                    <div class="google-avatar" style="background-color: #34A853;">AB</div>
+                    <div class="google-account-info">
+                        <p class="google-account-name">Alex Brown</p>
+                        <p class="google-account-email">organizer@example.com</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="color: var(--text-tertiary);">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <div class="google-account" data-email="new">
+                    <div class="google-avatar" style="background-color: var(--chrome-400);">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="google-account-info">
+                        <p class="google-account-name">Use another account</p>
+                        <p class="google-account-email">Sign in with a different Google account</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="color: var(--text-tertiary);">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Back to Login -->
+            <a href="index.html" class="back-link" style="margin-top: var(--space-6);">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Back to Login</span>
+            </a>
+
+            <!-- Privacy Notice -->
+            <p style="font-size: 11px; color: var(--text-tertiary); text-align: center; margin-top: var(--space-6);">
+                By continuing, you agree to NEXUS AI's Terms of Service and Privacy Policy.
+            </p>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay hidden" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Signing in with Google...</p>
+        </div>
+
+        <!-- Security Notice -->
+        <p class="security-notice">
+            This is a demo. In production, this would use real Google OAuth.
+        </p>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/validation.js"></script>
+    <script>
+        // Google Auth Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const googleAccounts = document.querySelectorAll('.google-account');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            // Check if already logged in
+            if (window.NexusAuth && window.NexusAuth.isLoggedIn()) {
+                window.NexusAuth.redirectToDashboard();
+                return;
+            }
+
+            // Handle account selection
+            googleAccounts.forEach(account => {
+                account.addEventListener('click', async () => {
+                    const email = account.dataset.email;
+
+                    // Show loading overlay
+                    loadingOverlay.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+
+                    try {
+                        let result;
+
+                        if (email === 'new') {
+                            // For "Use another account", just simulate with default
+                            result = await window.NexusAuth.loginWithGoogle();
+                        } else {
+                            result = await window.NexusAuth.loginWithGoogle(email);
+                        }
+
+                        if (!result.success) {
+                            loadingOverlay.classList.add('hidden');
+                            window.NexusValidation.showError(errorMessage, errorText, result.error);
+                            return;
+                        }
+
+                        // Create session
+                        window.NexusAuth.createSession(result.user);
+
+                        // Update loading text
+                        loadingOverlay.querySelector('.loading-text').textContent = 'Sign in successful! Redirecting...';
+
+                        setTimeout(() => {
+                            window.NexusAuth.redirectToDashboard();
+                        }, 1000);
+                    } catch (error) {
+                        loadingOverlay.classList.add('hidden');
+                        window.NexusValidation.showError(errorMessage, errorText, 'An error occurred. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard - NEXUS AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 16V4L10 10L16 4V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="sidebar-logo-text">NEXUS AI</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main</span>
+                    <a href="#" class="nav-item active" data-feature="events">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3 8H17M7 2V4M13 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Events</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="admins">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M16 17C16 14.2386 13.3137 12 10 12C6.68629 12 4 14.2386 4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Admins</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="budget">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M2 8H18" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M6 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Budget Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="sales">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 17V7L10 3L17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 17V11H13V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="nav-item-text">Sales Team</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="#" class="nav-item" data-feature="logs">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 4H16M4 8H16M4 12H10M4 16H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Activity Logs</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="settings">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.66 4.34L14.24 5.76M5.76 14.24L4.34 15.66M15.66 15.66L14.24 14.24M5.76 5.76L4.34 4.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Global Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-dropdown">
+                    <div class="user-menu">
+                        <div class="user-avatar">JS</div>
+                        <div class="user-info">
+                            <p class="user-name">John Smith</p>
+                            <p class="user-role">Super Admin</p>
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: var(--text-tertiary);">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown-menu">
+                        <div class="dropdown-item" data-action="profile">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M13 14C13 11.2386 10.7614 9 8 9C5.23858 9 3 11.2386 3 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Profile Settings</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item danger" data-action="logout">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M6 14H3C2.44772 14 2 13.5523 2 13V3C2 2.44772 2.44772 2 3 2H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M11 11L14 8L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M17 17L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C7.23858 2 5 4.23858 5 7V10L3 13V14H17V13L15 10V7C15 4.23858 12.7614 2 10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 14V15C8 16.1046 8.89543 17 10 17C11.1046 17 12 16.1046 12 15V14" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon purple">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M3 8H17M7 2V4M13 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span class="stat-trend up">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M6 9V3M6 3L3 6M6 3L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                12%
+                            </span>
+                        </div>
+                        <p class="stat-value">24</p>
+                        <p class="stat-label">Total Events</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M16 17C16 14.2386 13.3137 12 10 12C6.68629 12 4 14.2386 4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span class="stat-trend up">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M6 9V3M6 3L3 6M6 3L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                8%
+                            </span>
+                        </div>
+                        <p class="stat-value">12,450</p>
+                        <p class="stat-label">Total Registrations</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon blue">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M2 8H18" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="stat-value">50,000</p>
+                        <p class="stat-label">Registration Credits</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon orange">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M2 4L10 8L18 4M2 4V14L10 18M2 4L10 2L18 4M18 4V14L10 18M10 8V18" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="stat-value">100,000</p>
+                        <p class="stat-label">Email Credits</p>
+                    </div>
+                </div>
+
+                <!-- Events Section -->
+                <div class="content-header">
+                    <h2 class="content-title">Recent Events</h2>
+                    <div class="content-actions">
+                        <button class="btn btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M2 4H14M4 4V2H12V4M6 7V12M10 7V12M3 4L4 14H12L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Filter
+                        </button>
+                        <button class="btn btn-primary" onclick="createEvent()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            Create Event
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="events-grid">
+                    <!-- Events will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Protect this route - only Super Admin can access
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.NexusAuth.protectRoute(['Super Admin'])) {
+                // Redirect to appropriate dashboard or show access denied
+                const role = window.NexusAuth.getUserRole();
+                if (role) {
+                    window.location.href = window.NexusAuth.getDashboardUrl(role);
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

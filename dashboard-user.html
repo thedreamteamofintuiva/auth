@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - NEXUS AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 16V4L10 10L16 4V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="sidebar-logo-text">NEXUS AI</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main</span>
+                    <a href="#" class="nav-item active" data-feature="events">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3 8H17M7 2V4M13 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">My Events</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="calendar">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3 8H17M7 2V4M13 2V4M7 12H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Calendar</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="discover">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 2V4M10 16V18M2 10H4M16 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Discover Events</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Account</span>
+                    <a href="#" class="nav-item" data-feature="profile">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M16 17C16 14.2386 13.3137 12 10 12C6.68629 12 4 14.2386 4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Profile</span>
+                    </a>
+                    <a href="#" class="nav-item" data-feature="settings">
+                        <svg class="nav-item-icon" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.66 4.34L14.24 5.76M5.76 14.24L4.34 15.66M15.66 15.66L14.24 14.24M5.76 5.76L4.34 4.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="nav-item-text">Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-dropdown">
+                    <div class="user-menu">
+                        <div class="user-avatar" style="background-color: #10B981;">ED</div>
+                        <div class="user-info">
+                            <p class="user-name">Emily Davis</p>
+                            <p class="user-role">Attendee</p>
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: var(--text-tertiary);">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown-menu">
+                        <div class="dropdown-item" data-action="profile">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M13 14C13 11.2386 10.7614 9 8 9C5.23858 9 3 11.2386 3 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>My Profile</span>
+                        </div>
+                        <div class="dropdown-item" data-action="tickets">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <rect x="1" y="4" width="14" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M1 7H3M13 7H15M5 7V9M11 7V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>My Tickets</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item danger" data-action="logout">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M6 14H3C2.44772 14 2 13.5523 2 13V3C2 2.44772 2.44772 2 3 2H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M11 11L14 8L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <h1 class="page-title">My Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M17 17L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C7.23858 2 5 4.23858 5 7V10L3 13V14H17V13L15 10V7C15 4.23858 12.7614 2 10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 14V15C8 16.1046 8.89543 17 10 17C11.1046 17 12 16.1046 12 15V14" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Welcome Banner -->
+                <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px; padding: 24px; margin-bottom: 24px; color: white;">
+                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">Welcome back, Emily!</h2>
+                    <p style="font-size: 14px; opacity: 0.9; margin: 0;">You have 3 upcoming events this month.</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon purple">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <rect x="1" y="4" width="14" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 7H3M13 7H15M5 7V9M11 7V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="stat-value">5</p>
+                        <p class="stat-label">Registered Events</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="stat-value">3</p>
+                        <p class="stat-label">Attended Events</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon blue">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="stat-value">2</p>
+                        <p class="stat-label">Upcoming Events</p>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events Section -->
+                <div class="content-header">
+                    <h2 class="content-title">My Upcoming Events</h2>
+                    <div class="content-actions">
+                        <button class="btn btn-primary" onclick="alert('Browse Events - This would open the event discovery page')">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            Discover Events
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Events Cards -->
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);">
+                            <span class="event-status badge badge-success">Registered</span>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">Tech Summit 2025</h3>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <svg class="event-meta-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <rect x="2" y="3" width="12" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M2 6H14M5 1V3M11 1V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Mar 15, 2025 at 9:00 AM</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <svg class="event-meta-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 14C8 14 13 10 13 6C13 3.23858 10.7614 1 8 1C5.23858 1 3 3.23858 3 6C3 10 8 14 8 14Z" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <span>San Francisco, CA</span>
+                                </div>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn btn-secondary" onclick="alert('View Ticket')">View Ticket</button>
+                                <button class="btn btn-primary" onclick="alert('Add to Calendar')">Add to Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                            <span class="event-status badge badge-success">Registered</span>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">Marketing Conference</h3>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <svg class="event-meta-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <rect x="2" y="3" width="12" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M2 6H14M5 1V3M11 1V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Apr 20, 2025 at 10:00 AM</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <svg class="event-meta-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 14C8 14 13 10 13 6C13 3.23858 10.7614 1 8 1C5.23858 1 3 3.23858 3 6C3 10 8 14 8 14Z" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <span>New York, NY</span>
+                                </div>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn btn-secondary" onclick="alert('View Ticket')">View Ticket</button>
+                                <button class="btn btn-primary" onclick="alert('Add to Calendar')">Add to Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Events Section -->
+                <div class="content-header" style="margin-top: 32px;">
+                    <h2 class="content-title">Past Events</h2>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Product Launch 2024</strong></td>
+                                <td>Dec 15, 2024</td>
+                                <td>Virtual</td>
+                                <td><span class="badge badge-success">Attended</span></td>
+                                <td><button class="btn btn-ghost" style="padding: 4px 8px; min-height: auto;">View Certificate</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Winter Workshop</strong></td>
+                                <td>Nov 20, 2024</td>
+                                <td>Chicago, IL</td>
+                                <td><span class="badge badge-success">Attended</span></td>
+                                <td><button class="btn btn-ghost" style="padding: 4px 8px; min-height: auto;">View Certificate</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fall Conference</strong></td>
+                                <td>Oct 10, 2024</td>
+                                <td>Boston, MA</td>
+                                <td><span class="badge badge-success">Attended</span></td>
+                                <td><button class="btn btn-ghost" style="padding: 4px 8px; min-height: auto;">View Certificate</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Protect this route - All authenticated users can access
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.NexusAuth.isLoggedIn()) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
