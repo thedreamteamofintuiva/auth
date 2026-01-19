@@ -12,164 +12,227 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="login-card">
-            <!-- Logo and Branding -->
-            <div class="brand-header">
-                <div class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="#6366F1"/>
-                        <path d="M12 28V12L20 20L28 12V28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="logo-text">NEXUS AI</span>
-                </div>
-               
-            </div>
-
-            <!-- Login Form -->
-            <form id="loginForm" class="login-form" novalidate>
-                <h1 class="form-title">Welcome back</h1>
-                <p class="form-subtitle">Sign in to your account to continue</p>
-
-                <!-- Error Message Container -->
-                <div id="errorMessage" class="error-message hidden">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M8 4.5V8.5M8 11V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span id="errorText"></span>
+        <!-- Left Side - Login Form -->
+        <div class="login-left">
+            <div class="login-card">
+                <!-- Logo and Branding -->
+                <div class="brand-header">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="10" fill="url(#logo-gradient)"/>
+                            <path d="M12 28V12L20 20L28 12V28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#6366F1"/>
+                                    <stop offset="1" stop-color="#8B5CF6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="logo-text">NEXUS AI</span>
+                    </div>
                 </div>
 
-                <!-- Success Message Container -->
-                <div id="successMessage" class="success-message hidden">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span id="successText"></span>
-                </div>
+                <!-- Login Form -->
+                <form id="loginForm" class="login-form" novalidate>
+                    <h1 class="form-title">Welcome back</h1>
+                    <p class="form-subtitle">Sign in to your account to continue</p>
 
-                <!-- Email Field -->
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        class="form-input"
-                        placeholder="Enter your email"
-                        autocomplete="email"
-                        required
-                    >
-                    <span class="field-error" id="emailError"></span>
-                </div>
+                    <!-- Error Message Container -->
+                    <div id="errorMessage" class="error-message hidden">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4.5V8.5M8 11V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span id="errorText"></span>
+                    </div>
 
-                <!-- Password Field -->
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="password-wrapper">
+                    <!-- Success Message Container -->
+                    <div id="successMessage" class="success-message hidden">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span id="successText"></span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
                         <input
-                            type="password"
-                            id="password"
-                            name="password"
+                            type="email"
+                            id="email"
+                            name="email"
                             class="form-input"
-                            placeholder="Enter your password"
-                            autocomplete="current-password"
+                            placeholder="Enter your email"
+                            autocomplete="email"
                             required
                         >
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
-                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M2.5 10C2.5 10 5 4.5 10 4.5C15 4.5 17.5 10 17.5 10C17.5 10 15 15.5 10 15.5C5 15.5 2.5 10 2.5 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                            <svg class="eye-off-icon hidden" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M2.5 10C2.5 10 5 4.5 10 4.5C15 4.5 17.5 10 17.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M17.5 10C17.5 10 15 15.5 10 15.5C5 15.5 2.5 10 2.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M3 3L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                        </button>
+                        <span class="field-error" id="emailError"></span>
                     </div>
-                    <span class="field-error" id="passwordError"></span>
-                </div>
 
-                <!-- Forgot Password Link -->
-                <div class="form-options">
-                    <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
-                </div>
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-input"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M2.5 10C2.5 10 5 4.5 10 4.5C15 4.5 17.5 10 17.5 10C17.5 10 15 15.5 10 15.5C5 15.5 2.5 10 2.5 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <svg class="eye-off-icon hidden" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M2.5 10C2.5 10 5 4.5 10 4.5C15 4.5 17.5 10 17.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M17.5 10C17.5 10 15 15.5 10 15.5C5 15.5 2.5 10 2.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M3 3L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="field-error" id="passwordError"></span>
+                    </div>
 
-                <!-- Sign In Button -->
-                <button type="submit" class="btn btn-primary" id="signInBtn">
-                    <span class="btn-text">Sign In</span>
-                    <span class="btn-loader hidden">
-                        <svg class="spinner" width="20" height="20" viewBox="0 0 20 20">
-                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="50" stroke-dashoffset="20"/>
+                    <!-- Forgot Password Link -->
+                    <div class="form-options">
+                        <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <button type="submit" class="btn btn-primary" id="signInBtn">
+                        <span class="btn-text">Sign In</span>
+                        <span class="btn-loader hidden">
+                            <svg class="spinner" width="20" height="20" viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="50" stroke-dashoffset="20"/>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Google Login Button -->
+                    <button type="button" class="btn btn-google" id="googleLoginBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18.171 8.368h-.67v-.035H10v3.333h4.709A4.998 4.998 0 0 1 5 10a5 5 0 0 1 5-5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667a8.333 8.333 0 1 0 8.171 6.7Z" fill="#FFC107"/>
+                            <path d="M2.627 6.121 5.365 8.13A4.998 4.998 0 0 1 10 5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667a8.329 8.329 0 0 0-7.373 4.454Z" fill="#FF3D00"/>
+                            <path d="M10 18.333a8.294 8.294 0 0 0 5.587-2.163l-2.579-2.183A4.963 4.963 0 0 1 10 15a4.998 4.998 0 0 1-4.701-3.311L2.58 13.783A8.327 8.327 0 0 0 10 18.333Z" fill="#4CAF50"/>
+                            <path d="M18.171 8.368h-.67v-.035H10v3.333h4.709a5.015 5.015 0 0 1-1.703 2.321l2.58 2.182c-.183.166 2.747-2.003 2.747-6.17 0-.559-.057-1.104-.162-1.631Z" fill="#1976D2"/>
                         </svg>
-                    </span>
-                </button>
+                        <span>Continue with Google</span>
+                    </button>
 
-                <!-- Divider -->
-                <div class="divider">
-                    <span>OR</span>
-                </div>
+                    <!-- SSO Login Button -->
+                    <button type="button" class="btn btn-sso" id="ssoLoginBtn" style="margin-top: 12px;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M2 7h16M6 3v4M14 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>Login with SSO</span>
+                    </button>
 
-                <!-- Google Login Button -->
-                <button type="button" class="btn btn-google" id="googleLoginBtn">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M18.171 8.368h-.67v-.035H10v3.333h4.709A4.998 4.998 0 0 1 5 10a5 5 0 0 1 5-5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667a8.333 8.333 0 1 0 8.171 6.7Z" fill="#FFC107"/>
-                        <path d="M2.627 6.121 5.365 8.13A4.998 4.998 0 0 1 10 5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667a8.329 8.329 0 0 0-7.373 4.454Z" fill="#FF3D00"/>
-                        <path d="M10 18.333a8.294 8.294 0 0 0 5.587-2.163l-2.579-2.183A4.963 4.963 0 0 1 10 15a4.998 4.998 0 0 1-4.701-3.311L2.58 13.783A8.327 8.327 0 0 0 10 18.333Z" fill="#4CAF50"/>
-                        <path d="M18.171 8.368h-.67v-.035H10v3.333h4.709a5.015 5.015 0 0 1-1.703 2.321l2.58 2.182c-.183.166 2.747-2.003 2.747-6.17 0-.559-.057-1.104-.162-1.631Z" fill="#1976D2"/>
-                    </svg>
-                    <span>Continue with Google</span>
-                </button>
+                    <!-- Sign Up Link -->
+                    <p class="signup-prompt">
+                        Don't have an account? <a href="#" class="signup-link">Sign Up</a>
+                    </p>
+                </form>
 
-                <!-- SSO Login Button -->
-                <button type="button" class="btn btn-sso" id="ssoLoginBtn">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M2 7h16M6 3v4M14 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Login with SSO</span>
-                </button>
-
-                <!-- Sign Up Link -->
-                <p class="signup-prompt">
-                    Don't have an account? <a href="#" class="signup-link">Sign Up</a>
-                </p>
-            </form>
-
-            <!-- Demo Credentials Info -->
-            <div class="demo-info">
-                <button type="button" class="demo-toggle" id="demoToggle">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M8 7V11M8 5V5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>View Demo Credentials</span>
-                </button>
-                <div class="demo-credentials hidden" id="demoCredentials">
-                    <div class="credentials-section">
-                        <h4>Enterprise Users (SSO)</h4>
-                        <ul>
-                            <li><strong>Super Admin:</strong> superadmin@intuvia.com / Admin@123</li>
-                            <li><strong>Admin:</strong> admin@intuvia.com / Admin@123</li>
-                            <li><strong>Viewer:</strong> viewer@intuvia.com / Viewer@123</li>
-                        </ul>
+                <!-- Demo Credentials Info -->
+                <div class="demo-info">
+                    <button type="button" class="demo-toggle" id="demoToggle">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 7V11M8 5V5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>View Demo Credentials</span>
+                    </button>
+                    <div class="demo-credentials hidden" id="demoCredentials">
+                        <div class="credentials-section">
+                            <h4>Enterprise Users (SSO)</h4>
+                            <ul>
+                                <li><strong>Super Admin:</strong> superadmin@intuvia.com / Admin@123</li>
+                                <li><strong>Admin:</strong> admin@intuvia.com / Admin@123</li>
+                                <li><strong>Viewer:</strong> viewer@intuvia.com / Viewer@123</li>
+                            </ul>
+                        </div>
+                        <div class="credentials-section">
+                            <h4>Normal Users</h4>
+                            <ul>
+                                <li><strong>User:</strong> user@example.com / User@123</li>
+                                <li><strong>Organizer:</strong> organizer@example.com / Organizer@123</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="credentials-section">
-                        <h4>Normal Users</h4>
-                        <ul>
-                            <li><strong>User:</strong> user@example.com / User@123</li>
-                            <li><strong>Organizer:</strong> organizer@example.com / Organizer@123</li>
-                        </ul>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <p class="security-notice">
+                Protected by enterprise-grade security
+            </p>
+        </div>
+
+        <!-- Right Side - Visual/Image Area -->
+        <div class="login-right">
+            <!-- Animated Background Elements -->
+            <div class="grid-pattern"></div>
+            <div class="gradient-orb gradient-orb-1"></div>
+            <div class="gradient-orb gradient-orb-2"></div>
+            <div class="gradient-orb gradient-orb-3"></div>
+
+            <!-- Content -->
+            <div class="login-right-content">
+                <h2 class="login-right-title">
+                    The Future of<br>Event Management
+                </h2>
+                <p class="login-right-subtitle">
+                    Powerful AI-driven platform for creating, managing, and analyzing events at scale.
+                </p>
+
+                <!-- Feature List -->
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>AI-powered event creation & scheduling</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>Real-time analytics & insights</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>Enterprise SSO & security</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>Seamless team collaboration</span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Security Notice -->
-        <p class="security-notice">
-            This is a demo. Never store real passwords in localStorage in production.
-        </p>
     </div>
 
     <script src="js/auth.js"></script>

@@ -265,6 +265,9 @@ function resetPassword(token, newPassword) {
     };
 }
 
+// Allowed employer domains for SSO login
+const ALLOWED_SSO_DOMAINS = ['intuvia.com'];
+
 /**
  * Simulate SSO login
  * @param {string} domain - Company domain
@@ -274,6 +277,15 @@ function loginWithSSO(domain) {
     // Simulate SSO authentication delay
     return new Promise((resolve) => {
         setTimeout(() => {
+            // First check if the domain is in the allowed list
+            if (!ALLOWED_SSO_DOMAINS.includes(domain.toLowerCase())) {
+                resolve({
+                    success: false,
+                    error: 'SSO is not enabled for this domain. Please contact your administrator.'
+                });
+                return;
+            }
+
             // Check if domain matches any enterprise user
             const users = getUsers();
             const enterpriseUsers = users.filter(u =>
